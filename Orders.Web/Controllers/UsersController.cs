@@ -29,9 +29,10 @@ namespace Orders.Web.Controllers
 
         // GET api/users/5
         [HttpGet("{id}", Name="GetUser")]
-        public async Task<User> Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
-            return await _userRepository.GetById(id);
+            var user = await _userRepository.GetById(id);
+            return Ok(user);
         }
 
         // POST api/users

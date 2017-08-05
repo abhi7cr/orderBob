@@ -17,7 +17,7 @@ export class OrderService {
     get = (userId: number):Observable<OrderModel[]> => {
             // let searchParams = new URLSearchParams();
             // searchParams.append('userId', userId.toString());
-            return this.http.get('/api/ordersByUser/'+ userId).map(res => res.json())
+            return this.http.get('/api/getOrdersByUser/'+ userId).map(res => res.json())
     }
 
     getById = (id: number):Observable<OrderModel> => {

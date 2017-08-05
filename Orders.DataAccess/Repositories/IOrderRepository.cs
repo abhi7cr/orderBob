@@ -9,5 +9,6 @@ namespace Orders.DataAccess.Repositories
     {
         //order specific methods
          IQueryable<Order> GetOrdersByUser(int userId);
+		 IQueryable<Order> GetOrderById(int userId);
     }
 }

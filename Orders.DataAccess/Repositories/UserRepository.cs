@@ -18,7 +18,7 @@ namespace Orders.DataAccess.Repositories
 		{
 
 			var user = await base.GetById(id);
-            //await this.Context.Entry(user).Collection(x => x.Orders).LoadAsync();
+            await this.Context.Entry(user).Collection(x => x.Orders).LoadAsync();
 			return user;
 		}
 

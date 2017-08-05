@@ -26,6 +26,8 @@ namespace Orders.Web
         {
             //services.AddDbContext<OrdersContext>(opt => opt.UseSqlServer("Data Source=orderbob.conhcqpgorbb.us-east-1.rds.amazonaws.com,1433;Initial Catalog=orderbob;Persist Security Info=True;User ID=abhi7cr;Password=Keshibha71208;Encrypt=False")); 
 			services.AddMvc();
+            services.AddMvc().
+                    AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             //DI the repos
             services.AddTransient<IUserRepository, UserRepository>();

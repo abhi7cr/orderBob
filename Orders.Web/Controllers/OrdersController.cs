@@ -27,9 +27,13 @@ namespace Orders.Web.Controllers
 
         // GET api/users/5
         [Route("api/getOrder/{id}")]
-        public async Task<Order> Get(int id)
+        public IQueryable<Order> Get(int id)
         {
-            return await _orderRepository.GetById(id);
+            return _orderRepository.GetOrderById(id);
+            //if (order == null)
+            //    return NotFound("Order not found!");
+            
+            //return Ok(order);
         }
 
         // POST api/orders

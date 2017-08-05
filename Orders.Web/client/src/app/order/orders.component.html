@@ -6,7 +6,7 @@
     <p *ngIf="isOrderListEmpty">{{noOrdersMessage}}</p>
     <md-list-item *ngFor="let order of orders | async">
         <md-icon>perm_identity</md-icon>
-        <a routerLink="order/{{order.orderId}}" routerLinkActive="active">{{order.name}}</a>
+        <a routerLink="order/{{order.orderId}}" routerLinkActive="active">{{order.trackingId}}</a>
     </md-list-item>
 </md-list>
 

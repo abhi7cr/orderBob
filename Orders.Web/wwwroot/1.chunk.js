@@ -310,19 +310,19 @@ var OrderService = (function () {
         this.get = function (userId) {
             // let searchParams = new URLSearchParams();
             // searchParams.append('userId', userId.toString());
-            return _this.http.get('/api/ordersByUser/' + userId).map(function (res) { return res.json(); });
+            return _this.http.get('/api/getOrdersByUser/' + userId).map(function (res) { return res.json(); });
         };
         this.getById = function (id) {
-            return _this.http.get('/api/orders/' + id).map(function (res) { return res.json(); });
+            return _this.http.get('/api/getOrder/' + id).map(function (res) { return res.json(); });
         };
         this.create = function (order) {
             var orderToCreate = _this.prepareOrderObjectToSend(order);
-            return _this.http.post('/api/orders', orderToCreate, { headers: _this.headers })
+            return _this.http.post('/api/createOrder', orderToCreate, { headers: _this.headers })
                 .map(function (res) { return res.json(); });
         };
         this.update = function (order) {
             var orderToUpdate = _this.prepareOrderObjectToSend(order);
-            return _this.http.put('/api/orders/' + order.orderId, orderToUpdate, { headers: _this.headers })
+            return _this.http.put('/api/updateOrder/' + order.orderId, orderToUpdate, { headers: _this.headers })
                 .map(function (res) { return res.json(); });
         };
         this.delete = function (order) {
@@ -331,7 +331,7 @@ var OrderService = (function () {
             request.body = orderToDelete;
             request.method = 'DELETE';
             request.headers = _this.headers;
-            return _this.http.delete('/api/orders/delete', request)
+            return _this.http.delete('/api/deleteOrder', request)
                 .map(function (res) { return res.json(); });
         };
         this.prepareOrderObjectToSend = function (order) {
@@ -367,7 +367,7 @@ var _a;
 /***/ "../../../../../src/app/order/orders.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<md-list>\n    <md-list-item>\n        <a routerLink=\"order\" routerLinkActive=\"active\">Create Order</a>\n      </md-list-item>\n    <p *ngIf=\"isLoading\">Please Wait...</p>\n    <p *ngIf=\"isOrderListEmpty\">{{noOrdersMessage}}</p>\n    <md-list-item *ngFor=\"let order of orders | async\">\n        <md-icon>perm_identity</md-icon>\n        <a routerLink=\"order/{{order.orderId}}\" routerLinkActive=\"active\">{{order.name}}</a>\n    </md-list-item>\n</md-list>\n\n\n"
+module.exports = "<md-list>\n    <md-list-item>\n        <a routerLink=\"order\" routerLinkActive=\"active\">Create Order</a>\n      </md-list-item>\n    <p *ngIf=\"isLoading\">Please Wait...</p>\n    <p *ngIf=\"isOrderListEmpty\">{{noOrdersMessage}}</p>\n    <md-list-item *ngFor=\"let order of orders | async\">\n        <md-icon>perm_identity</md-icon>\n        <a routerLink=\"order/{{order.orderId}}\" routerLinkActive=\"active\">{{order.trackingId}}</a>\n    </md-list-item>\n</md-list>\n\n\n"
 
 /***/ }),
 

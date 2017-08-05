@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Orders.DataAccess.Models;
 using System.Linq;
@@ -24,11 +25,14 @@ namespace Orders.DataAccess.Repositories
             return orders.Where(o=>o.UserId == userId);
 		}
 
-		public override async Task<Order> GetById(int id)
+        public IQueryable<Order> GetOrderById(int id)
 		{
 
-			var order = await base.GetById(id);
-			await this.Context.Entry(order).Reference(x => x.Location).LoadAsync();
+            var order =  base.GetAll()
+                                  .Where(x => x.OrderId == id)
+                                  .Include(x => x.Location);
+       //     if(order != null)
+			    //await this.Context.Entry(order).Reference(x => x.Location).LoadAsync();
 			return order;
 		}
 
