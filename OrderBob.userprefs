@@ -1,0 +1,52 @@
+﻿<Properties StartupConfiguration="{A63BD0E0-19E3-45BE-AD0D-C026FCBEDD89}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Orders.Web/Controllers/OrdersController.cs">
+    <Files>
+      <File FileName="Orders.Web/ApplicationBuilderExtensions.cs" Line="10" Column="21" />
+      <File FileName="Orders.Web/Controllers/OrdersController.cs" Line="14" Column="19" />
+      <File FileName="Orders.Web/appsettings.json" Line="6" Column="6" />
+      <File FileName="Orders.Web/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="Orders.Web/bower.json" Line="1" Column="1" />
+      <File FileName="Orders.Web/bundleconfig.json" Line="1" Column="1" />
+      <File FileName="Orders.Web/Program.cs" Line="21" Column="1" />
+      <File FileName="Orders.Web/Startup.cs" Line="7" Column="1" />
+      <File FileName="Orders.Web/Controllers/UsersController.cs" Line="34" Column="1" />
+      <File FileName="Orders.DataAccess/Models/Location.cs" Line="2" Column="28" />
+      <File FileName="Orders.DataAccess/Models/Model.cs" Line="5" Column="21" />
+      <File FileName="Orders.DataAccess/Models/Order.cs" Line="2" Column="28" />
+      <File FileName="Orders.DataAccess/Models/User.cs" Line="7" Column="23" />
+      <File FileName="Orders.DataAccess/Repositories/BaseRepository.cs" Line="8" Column="1" />
+      <File FileName="Orders.DataAccess/Repositories/IBaseRepository.cs" Line="8" Column="2" />
+      <File FileName="Orders.DataAccess/Repositories/IOrderRepository.cs" Line="6" Column="2" />
+      <File FileName="Orders.DataAccess/Repositories/IUserRepository.cs" Line="1" Column="31" />
+      <File FileName="Orders.DataAccess/Repositories/OrderRepository.cs" Line="5" Column="24" />
+      <File FileName="Orders.DataAccess/Repositories/UserRepository.cs" Line="13" Column="6" />
+      <File FileName="Orders.DataAccess/Migrations/20170804155021_RDS3.Designer.cs" Line="8" Column="26" />
+      <File FileName="Orders.DataAccess/Migrations/20170804223329_RDS4.Designer.cs" Line="6" Column="24" />
+      <File FileName="Orders.DataAccess/Migrations/20170805000122_initialCreate.cs" Line="1" Column="1" />
+      <File FileName="Orders.DataAccess/Migrations/20170805000122_initialCreate.Designer.cs" Line="8" Column="18" />
+      <File FileName="Orders.DataAccess/Migrations/OrdersContextModelSnapshot.cs" Line="9" Column="2" />
+      <File FileName="Orders.DataAccess/Migrations/20170804223329_RDS4.cs" Line="1" Column="1" />
+      <File FileName="Orders.DataAccess/Migrations/20170804155021_RDS3.cs" Line="1" Column="1" />
+      <File FileName="Orders.Web/Controllers/HomeController.cs" Line="18" Column="10" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/abhishekraj/Projects/Orders/Controllers/UsersController.cs" line="42" column="1" />
+      <Breakpoint file="/Users/abhishekraj/Projects/Orders/Controllers/UsersController.cs" line="57" column="1" />
+      <Breakpoint file="/Users/abhishekraj/Projects/OrderBob/Orders.Web/Controllers/UsersController.cs" relfile="Orders.Web/Controllers/UsersController.cs" line="6" column="1" />
+      <Breakpoint file="/Users/abhishekraj/Projects/OrderBob/Orders.Data/Migrations/20170804155021_RDS3.cs" relfile="Orders.Data/Migrations/20170804155021_RDS3.cs" line="10" column="1" />
+      <Breakpoint file="/Users/abhishekraj/Projects/OrderBob/Orders.Data/Migrations/20170804155021_RDS3.cs" relfile="Orders.Data/Migrations/20170804155021_RDS3.cs" line="8" column="1" />
+      <Breakpoint file="/Users/abhishekraj/Projects/OrderBob/Orders.Web/Controllers/UsersController.cs" relfile="Orders.Web/Controllers/UsersController.cs" line="57" column="1" />
+      <Breakpoint file="/Users/abhishekraj/Projects/OrderBob/Orders.Web/Controllers/UsersController.cs" relfile="Orders.Web/Controllers/UsersController.cs" line="34" column="1" />
+      <Breakpoint file="/Users/abhishekraj/Projects/OrderBob/Orders.Web/Controllers/OrdersController.cs" relfile="Orders.Web/Controllers/OrdersController.cs" line="26" column="1" />
+      <Breakpoint file="/Users/abhishekraj/Projects/OrderBob/Orders.Data/Repositories/OrderRepository.cs" relfile="Orders.Data/Repositories/OrderRepository.cs" line="32" column="1" />
+      <Breakpoint file="/Users/abhishekraj/Projects/OrderBob/Orders.DataAccess/Migrations/20170804223329_RDS4.Designer.cs" relfile="Orders.DataAccess/Migrations/20170804223329_RDS4.Designer.cs" line="10" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <AuthorInfo Name="abhishekraj" Email="" Copyright="" Company="" Trademark="" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Orders.Web PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

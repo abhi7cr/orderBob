@@ -1,0 +1,13 @@
+<md-list>
+    <md-list-item>
+        <a routerLink="order" routerLinkActive="active">Create Order</a>
+      </md-list-item>
+    <p *ngIf="isLoading">Please Wait...</p>
+    <p *ngIf="isOrderListEmpty">{{noOrdersMessage}}</p>
+    <md-list-item *ngFor="let order of orders | async">
+        <md-icon>perm_identity</md-icon>
+        <a routerLink="order/{{order.orderId}}" routerLinkActive="active">{{order.name}}</a>
+    </md-list-item>
+</md-list>
+
+

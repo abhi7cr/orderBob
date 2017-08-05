@@ -1,0 +1,29 @@
+{{mode}} User
+<div class="row">
+  <div class="col-6">
+<form class="users-form" [formGroup]="usersForm">
+    <div class="form-container">
+        <md-input-container class="user-full-width">
+            <input mdInput placeholder="First Name"
+                    [(ngModel)]="user.firstName"
+                   formControlName="firstName">
+        </md-input-container>
+        <md-input-container class="user-full-width">
+            <input mdInput placeholder="Last Name"
+                   [(ngModel)]="user.lastName" formControlName="lastName">
+        </md-input-container>
+        <button md-raised-button [disabled]="!usersForm.valid" (click)="createOrUpdate()">{{mode}}</button>
+      </div>
+  </form>
+  </div>
+  <div class="col-6" *ngIf="user.userId !== 0">
+    <md-nav-list>
+     <md-list-item>
+        <a routerLink="orders" routerLinkActive="active">View Orders</a>
+      </md-list-item>
+      <!--<md-list-item>
+        <a routerLink="order" routerLinkActive="active">Create Order</a>
+      </md-list-item>-->
+    </md-nav-list>
+    </div>
+</div>

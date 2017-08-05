@@ -1,0 +1,10 @@
+/Users/abhishekraj/Projects/Orders/Orders/bin/Release/netcoreapp1.1/Orders.deps.json
+/Users/abhishekraj/Projects/Orders/Orders/bin/Release/netcoreapp1.1/Orders.runtimeconfig.json
+/Users/abhishekraj/Projects/Orders/Orders/bin/Release/netcoreapp1.1/Orders.runtimeconfig.dev.json
+/Users/abhishekraj/Projects/Orders/Orders/bin/Release/netcoreapp1.1/Orders.dll
+/Users/abhishekraj/Projects/Orders/Orders/bin/Release/netcoreapp1.1/Orders.pdb
+/Users/abhishekraj/Projects/Orders/Orders/obj/Release/netcoreapp1.1/Orders.csprojResolveAssemblyReference.cache
+/Users/abhishekraj/Projects/Orders/Orders/obj/Release/netcoreapp1.1/Orders.csproj.CoreCompileInputs.cache
+/Users/abhishekraj/Projects/Orders/Orders/obj/Release/netcoreapp1.1/Orders.AssemblyInfo.cs
+/Users/abhishekraj/Projects/Orders/Orders/obj/Release/netcoreapp1.1/Orders.dll
+/Users/abhishekraj/Projects/Orders/Orders/obj/Release/netcoreapp1.1/Orders.pdb

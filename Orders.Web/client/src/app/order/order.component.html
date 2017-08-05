@@ -1,0 +1,46 @@
+{{mode}} Order
+<div class="row">
+    <div class="col-6">
+<form [formGroup]="ordersForm">
+    <div class="form-container">
+        <md-input-container class="user-full-width">
+            <input mdInput placeholder="Tracking Number"
+                   [(ngModel)]="order.trackingId"
+                   formControlName="trackingId">
+        </md-input-container>
+        <md-input-container class="user-full-width">
+            <input mdInput placeholder="Location Name"
+                   [(ngModel)]="order.location.name" formControlName="locationName">
+        </md-input-container>
+        <p>
+            <md-input-container class="example-full-width">
+            <textarea mdInput placeholder="Street"
+            [(ngModel)]="order.location.street" formControlName="street"></textarea>
+            </md-input-container>
+  </p>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><md-input-container class="example-full-width">
+      <input mdInput placeholder="City" 
+      [(ngModel)]="order.location.city" formControlName="city">
+
+    </md-input-container></td>
+    <td><md-input-container class="example-full-width">
+      <input mdInput placeholder="State"
+      [(ngModel)]="order.location.state" formControlName="state">
+    </md-input-container></td>
+    <td><md-input-container class="example-full-width">
+      <input mdInput #postalCode maxlength="5" placeholder="Postal Code"
+      [(ngModel)]="order.location.zipCode" formControlName="zipCode">
+      <md-hint *ngIf="order.location.zipCode !== undefined" align="end">
+          {{order.location.zipCode.length}} / 5</md-hint>
+    </md-input-container></td>
+  </tr></table>
+        <button md-raised-button [disabled]="!ordersForm.valid" (click)="createOrUpdate()">{{mode}}</button>
+    </div>
+</form>
+    </div>
+    <div class="col-6" *ngIf="id !== undefined">
+        <button md-raised-button color="warn" (click)="delete()">DELETE</button>
+    </div>
+

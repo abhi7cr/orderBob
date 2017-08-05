@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+
+@mixin order-bob-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  
+  body {
+    color: mat-color($foreground, text);
+  }
+
+ a {
+    font-family:'Dosis', sans-serif;
+ }
+
+ md-nav-list {
+   border-bottom: 1px solid mat-color($foreground, divider);
+ }
+
+}
+
