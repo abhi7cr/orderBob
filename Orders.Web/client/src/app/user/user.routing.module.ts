@@ -6,9 +6,9 @@ import { UserComponent }  from './user.component';
 export const routes: Routes = [
   {path: '', component: UsersComponent},
   {path: 'users', component: UsersComponent},
-  {path: 'user', component: UserComponent},
-  {path: 'user/:id', component: UserComponent},
-  {path: 'user/:id/orders', loadChildren: '../order/order.module#OrderModule'}
+  {path: 'new', component: UserComponent},
+  {path: ':id', component: UserComponent},
+  {path: ':id/orders', loadChildren: '../order/order.module#OrderModule'}
 ];
 
 @NgModule({

@@ -17,24 +17,24 @@ export class OrderService {
     get = (userId: number):Observable<OrderModel[]> => {
             // let searchParams = new URLSearchParams();
             // searchParams.append('userId', userId.toString());
-            return this.http.get('/api/getOrdersByUser/'+ userId).map(res => res.json())
+            return this.http.get('/api/orders/user/'+ userId).map(res => res.json())
     }
 
     getById = (id: number):Observable<OrderModel> => {
-            return this.http.get('/api/getOrder/'+id).map(res => res.json())
+            return this.http.get('/api/orders/'+id).map(res => res.json())
     }
 
     create = (order: OrderModel):Observable<OrderModel> => {
         let orderToCreate= this.prepareOrderObjectToSend(order);
 
-        return this.http.post('/api/createOrder', orderToCreate, {headers: this.headers})
+        return this.http.post('/api/orders', orderToCreate, {headers: this.headers})
                         .map(res => res.json())
     }
 
      update = (order: OrderModel):Observable<OrderModel> => {
         let orderToUpdate = this.prepareOrderObjectToSend(order);
 
-        return this.http.put('/api/updateOrder/'+ order.orderId, orderToUpdate, {headers: this.headers})
+        return this.http.put('/api/orders/'+ order.orderId, orderToUpdate, {headers: this.headers})
                         .map(res => res.json())
     }
 
@@ -46,7 +46,7 @@ export class OrderService {
         request.method = 'DELETE';
         request.headers = this.headers;
 
-        return this.http.delete('/api/deleteOrder', request)
+        return this.http.delete('/api/orders', request)
                         .map(res => res.json())
     }
 
@@ -54,14 +54,15 @@ export class OrderService {
             return {
                 TrackingId: order.trackingId,
                 UserId: order.userId,
-                Id: order.orderId !== 0? order.orderId: undefined,
+                OrderId: order.orderId !== 0? order.orderId: undefined,
                 Location: {
                     Name: order.location.name,
                     City: order.location.city,
                     State:order.location.state,
                     ZipCode:order.location.zipCode,
                     Street:order.location.street,
-                    Id: order.location.id !== 0? order.location.id: null        
+                    LocationId: order.location.locationId !== 0? 
+                                            order.location.locationId: null        
             }
         }  
     }

@@ -36,6 +36,18 @@ export class UserService {
                         .map(res => res.json())
     }
 
+     delete = (user: UserModel):Observable<UserModel> => {
+        let orderToDelete = this.prepareUserToSend(user);
+
+        let request = new RequestOptions();
+        request.body = orderToDelete;
+        request.method = 'DELETE';
+        request.headers = this.headers;
+
+        return this.http.delete('/api/users', request)
+                        .map(res => res.json())
+    }
+
     prepareUserToSend = (user: UserModel) => {
         return {
             FirstName: user.firstName,

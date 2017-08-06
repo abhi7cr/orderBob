@@ -5,8 +5,9 @@ import { OrderComponent }  from './order.component';
 
 export const routes: Routes = [
   {path: '', component: OrdersComponent},
-  {path: 'order/:id', component: OrderComponent},
-  {path: 'order', component: OrderComponent}
+  {path: ':id', component: OrderComponent},
+  {path: 'orders', component: OrdersComponent},
+  {path: 'new', component: OrderComponent}
 ];
 
 @NgModule({

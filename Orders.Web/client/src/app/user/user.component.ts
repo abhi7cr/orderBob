@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {UserModel} from './user.model';
 import {UserService} from './user.service';
+import {MdSnackBar, MdSnackBarConfig} from '@angular/material';
 import {FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -16,7 +17,8 @@ export class UserComponent implements OnInit {
     constructor(private activatedRoute:ActivatedRoute,
                 private userService: UserService,
                 private router: Router,
-                private formBuilder: FormBuilder){
+                private formBuilder: FormBuilder,
+                private snackBar: MdSnackBar){
                 this.user = new UserModel();
     }
 
@@ -51,12 +53,49 @@ export class UserComponent implements OnInit {
                         .subscribe(this.successCallback, this.errorCallback);
     }
 
+    delete = () => {
+      this.mode = 'Delete';
+      this.userService.delete(this.user)
+                      .subscribe(this.successCallback, this.errorCallback);
+    }
+
     successCallback = (res) => {
             if(res !== null)
                  {
-                    this.user.userId !== undefined? 
-                        alert('user updated successfully!'):
-                        alert('user created successfully!');
+                    let snackBarRef:any;
+                     
+                    let snackBarConfig: MdSnackBarConfig = {
+                          extraClasses: ['snackBarMessage']
+                    }
+                   switch(this.mode){
+                     case 'Create':
+                     {       
+                        snackBarRef = this.snackBar.open('user created successfully!',
+                        'dismiss', snackBarConfig);
+                        this.onSnackBarActionCallback(snackBarRef);
+                        break;
+                     }
+                     case 'Update':
+                     {
+                        snackBarRef = this.snackBar.open('user updated successfully!',
+                        'dismiss', snackBarConfig);
+                        this.onSnackBarActionCallback(snackBarRef);
+                        break;
+                     }
+                     case 'Delete':
+                     {
+                        snackBarRef = this.snackBar.open('user deleted successfully!',
+                        'dismiss', snackBarConfig);
+                        this.onSnackBarActionCallback(snackBarRef);
+                        break;
+                     }
+                     default:
+                      {
+                        snackBarRef = this.snackBar.open('invalid operation!',
+                        'dismiss', snackBarConfig);
+                        this.onSnackBarActionCallback(snackBarRef);
+                      }
+                   }
                     this.router.navigateByUrl('/users');
                     }
             else {
@@ -66,5 +105,11 @@ export class UserComponent implements OnInit {
 
     errorCallback = (err) => {
         alert("Error:" + err.status + ":" + err.message);
+    }
+
+    onSnackBarActionCallback = (snackBarRef) => {
+             snackBarRef.onAction().subscribe(() => {
+                            snackBarRef.dismiss();
+                      });
     }
 }

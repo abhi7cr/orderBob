@@ -3,7 +3,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {OrderModel} from './order.model';
 import {OrderService} from './order.service';
 import {FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
-import {LocationModel} from './location.model'
+import {LocationModel} from './location.model';
+import {MdSnackBar, MdSnackBarConfig} from '@angular/material';
 
 @Component({
   selector: 'order',
@@ -18,7 +19,8 @@ export class OrderComponent {
     constructor(private activatedRoute:ActivatedRoute,
                 private orderService: OrderService,
                 private router: Router,
-                private formBuilder: FormBuilder){
+                private formBuilder: FormBuilder,
+                private snackBar: MdSnackBar){
                 this.order = new OrderModel();
                 this.order.location = new LocationModel();
     }
@@ -26,14 +28,15 @@ export class OrderComponent {
     ngOnInit(){
       this.id = this.activatedRoute.snapshot.params.id;
       //Check whether its an existing order or a new order using the url
-      this.mode = isNaN(Number(this.router.url[this.router.url.length-1]))?
+      this.mode = this.router.url.indexOf('new') !== -1?
                     "Create":"Update";
       if(this.id && this.mode === "Update")
         {
             this.mode = 'Update';
-            this.orderService.getById(Number(this.id))
+            this.orderService.get(Number(this.id))
                         .subscribe(res => {
-                                this.order = res;
+                                if(res !== null)
+                                    this.order = res[0];
             }, err => {
                 throw err;
             });
@@ -71,34 +74,55 @@ export class OrderComponent {
     successCallback = (res) => {
             if(res !== null)
                  {
+                     let snackBarRef:any;
+                     let snackBarConfig: MdSnackBarConfig = {
+                          extraClasses: ['snackBarMessage']
+                      }
                    switch(this.mode){
                      case 'Create':
-                     {
-                       alert('order created successfully!');
-                       break;
+                     {       
+                        snackBarRef = this.snackBar.open(
+                            'order created successfully!',
+                            'dismiss', snackBarConfig);
+                        this.onSnackBarActionCallback(snackBarRef);
+                        break;
                      }
                      case 'Update':
                      {
-                       alert('order updated successfully!');
-                       break;
+                      snackBarRef = this.snackBar.open(
+                          'order updated successfully!',
+                          'dismiss', snackBarConfig);
+                      this.onSnackBarActionCallback(snackBarRef);
+                      break;
                      }
                      case 'Delete':
                      {
-                       alert('order deleted successfully!');
+                       snackBarRef = this.snackBar.open('order deleted successfully!',
+                       'dismiss', snackBarConfig);
+                       this.onSnackBarActionCallback(snackBarRef);
                        break;
                      }
-                     default:
-                      alert("invalid operation!");
+                     default:{
+                         snackBarRef = this.snackBar.open('invalid operation!',
+                         'dismiss', snackBarConfig);
+                         this.onSnackBarActionCallback(snackBarRef);
+                     }        
                    }
                     this.router.navigateByUrl('/orders');
                     }
             else {
-                    alert("Error!order was not created/updated");
+                    alert("Error!Unable to " + this.mode + " order");
                  }
     }
 
     errorCallback = (err) => {
         alert("Error:" + err.status + ":" + err.message);
+    }
+
+    onSnackBarActionCallback = (snackBarRef) => {
+             snackBarRef.onAction().subscribe(() => {
+                            snackBarRef.dismiss();
+                      });
     }
 }
 

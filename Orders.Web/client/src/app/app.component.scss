@@ -11,6 +11,10 @@
     color: mat-color($foreground, text);
   }
 
+  :host /deep/ snack-bar-container.snackBarMessage mat-simple-snackbar{
+    color: #ff5722;
+   }
+
  a {
     font-family:'Dosis', sans-serif;
  }

@@ -5,6 +5,6 @@
                 public city?:string,
                 public state?: string,
                 public zipCode?: string,
-                public id?: number){
+                public locationId?: number){
                 }
 }

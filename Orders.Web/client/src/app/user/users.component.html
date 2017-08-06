@@ -1,13 +1,13 @@
  
 <md-list>
     <md-list-item>
-     <a routerLink="user" routerLinkActive="active">Create User</a>
+     <a routerLink="new" routerLinkActive="active"><md-icon>add_box</md-icon></a>
    </md-list-item>
     <p *ngIf="isLoading">Please Wait...</p>
-    <p *ngIf="isUsersListEmpty">{{noUsersMessage}}</p>
+    <p *ngIf="isUserListEmpty">{{noUsersMessage}}</p>
     <md-list-item *ngFor="let user of users | async">
         <md-icon>person</md-icon>
-        <a routerLink="user/{{user.userId}}" routerLinkActive="active">{{user.firstName}} {{user.lastName}}</a>
+        <a routerLink="{{user.userId}}" routerLinkActive="active">{{user.firstName}} {{user.lastName}}</a>
     </md-list-item>
 </md-list>
 
