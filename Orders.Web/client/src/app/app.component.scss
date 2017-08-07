@@ -7,15 +7,15 @@
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
   
-  body, p, span{
+  :host /deep/ body, p, span, div{
     color: mat-color($foreground, text);
   }
 
-  :host /deep/ snack-bar-container.snackBarMessage .mat-simple-snackbar{
-    color: #ff5722;
-   }
+  // :host /deep/ snack-bar-container.snackBarMessage, .mat-simple-snackbar{
+  //   color: #ff5722 !important;
+  //  }
 
- a {
+ :host /deep/ a, body, button, p, span, div {
     font-family:'Dosis', sans-serif;
  }
 

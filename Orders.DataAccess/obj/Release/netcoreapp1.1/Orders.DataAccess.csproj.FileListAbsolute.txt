@@ -1,0 +1,10 @@
+/Users/abhishekraj/Projects/OrderBob/Orders.DataAccess/bin/Release/netcoreapp1.1/Orders.DataAccess.deps.json
+/Users/abhishekraj/Projects/OrderBob/Orders.DataAccess/bin/Release/netcoreapp1.1/Orders.DataAccess.runtimeconfig.json
+/Users/abhishekraj/Projects/OrderBob/Orders.DataAccess/bin/Release/netcoreapp1.1/Orders.DataAccess.runtimeconfig.dev.json
+/Users/abhishekraj/Projects/OrderBob/Orders.DataAccess/bin/Release/netcoreapp1.1/Orders.DataAccess.dll
+/Users/abhishekraj/Projects/OrderBob/Orders.DataAccess/bin/Release/netcoreapp1.1/Orders.DataAccess.pdb
+/Users/abhishekraj/Projects/OrderBob/Orders.DataAccess/obj/Release/netcoreapp1.1/Orders.DataAccess.AssemblyInfo.cs
+/Users/abhishekraj/Projects/OrderBob/Orders.DataAccess/obj/Release/netcoreapp1.1/Orders.DataAccess.dll
+/Users/abhishekraj/Projects/OrderBob/Orders.DataAccess/obj/Release/netcoreapp1.1/Orders.DataAccess.pdb
+/Users/abhishekraj/Projects/OrderBob/Orders.DataAccess/obj/Release/netcoreapp1.1/Orders.DataAccess.csprojResolveAssemblyReference.cache
+/Users/abhishekraj/Projects/OrderBob/Orders.DataAccess/obj/Release/netcoreapp1.1/Orders.DataAccess.csproj.CoreCompileInputs.cache

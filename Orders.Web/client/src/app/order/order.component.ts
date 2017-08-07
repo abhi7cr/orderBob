@@ -1,4 +1,4 @@
-﻿﻿import { Component, OnInit } from '@angular/core';
+﻿﻿import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {OrderModel} from './order.model';
 import {OrderService} from './order.service';
@@ -9,7 +9,8 @@ import {MdSnackBar, MdSnackBarConfig} from '@angular/material';
 @Component({
   selector: 'order',
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.scss']
+  styleUrls: ['./order.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class OrderComponent {
     order: OrderModel;
@@ -28,9 +29,19 @@ export class OrderComponent {
     ngOnInit(){
 
       this.id = this.activatedRoute.snapshot.params.id;
-       let route = this.router.url;
-       let userIdPath =  route.split('/orders')[0];
-       this.order.userId = Number(userIdPath[userIdPath.length-1]);
+      let route = this.router.url;
+      let userIdPath =  route.split('/orders')[0].split('users/')[1];
+      this.order.userId = Number(userIdPath);
+
+      this.ordersForm = this.formBuilder.group({
+                trackingId:[null, Validators.required],
+                locationName: [null, Validators.required],
+                street:[null, Validators.required],
+                state:[null, Validators.required],
+                city:[null, Validators.required],
+                zipCode:[null, [Validators.required, Validators.maxLength]]
+        });
+
       //New order, extract userid from route
       if(this.id === 'new'){
            
@@ -50,16 +61,6 @@ export class OrderComponent {
                 throw err;
             });
         }
-
-        this.ordersForm = this.formBuilder.group({
-                trackingId:[null, Validators.required],
-                locationName: [null, Validators.required],
-                street:[null, Validators.required],
-                state:[null, Validators.required],
-                city:[null, Validators.required],
-                zipCode:[null, [Validators.required, Validators.maxLength]]
-        });
-
     }
 
     createOrUpdate = () => {
@@ -81,9 +82,9 @@ export class OrderComponent {
             if(res !== null)
                  {
                      let snackBarRef:any;
-                     let snackBarConfig: MdSnackBarConfig = {
-                          extraClasses: ['snackBarMessage']
-                      }
+                     let snackBarConfig = new MdSnackBarConfig();
+                     snackBarConfig.extraClasses = ['snackBarMessage'];
+
                    switch(this.mode){
                      case 'Create':
                      {       

@@ -24,7 +24,7 @@ var LocationModel = (function () {
 /***/ "../../../../../src/app/order/order.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "{{mode}} Order\r\n<div class=\"row\">\r\n    <div class=\"col-6\">\r\n<form [formGroup]=\"ordersForm\">\r\n    <div class=\"form-container\">\r\n        <md-input-container class=\"user-full-width\">\r\n            <input mdInput placeholder=\"Tracking Number\"\r\n                   [(ngModel)]=\"order.trackingId\"\r\n                   formControlName=\"trackingId\">\r\n        </md-input-container>\r\n        <md-input-container class=\"user-full-width\">\r\n            <input mdInput placeholder=\"Location Name\"\r\n                   [(ngModel)]=\"order.location.name\" formControlName=\"locationName\">\r\n        </md-input-container>\r\n        <p>\r\n            <md-input-container class=\"example-full-width\">\r\n            <textarea mdInput placeholder=\"Street\"\r\n            [(ngModel)]=\"order.location.street\" formControlName=\"street\"></textarea>\r\n            </md-input-container>\r\n  </p>\r\n\r\n  <table class=\"example-full-width\" cellspacing=\"0\"><tr>\r\n    <td><md-input-container class=\"example-full-width\">\r\n      <input mdInput placeholder=\"City\" \r\n      [(ngModel)]=\"order.location.city\" formControlName=\"city\">\r\n\r\n    </md-input-container></td>\r\n    <td><md-input-container class=\"example-full-width\">\r\n      <input mdInput placeholder=\"State\"\r\n      [(ngModel)]=\"order.location.state\" formControlName=\"state\">\r\n    </md-input-container></td>\r\n    <td><md-input-container class=\"example-full-width\">\r\n      <input mdInput #postalCode maxlength=\"5\" placeholder=\"Postal Code\"\r\n      [(ngModel)]=\"order.location.zipCode\" formControlName=\"zipCode\">\r\n      <md-hint *ngIf=\"order.location.zipCode !== undefined\" align=\"end\">\r\n          {{order.location.zipCode.length}} / 5</md-hint>\r\n    </md-input-container></td>\r\n  </tr></table>\r\n        <button md-raised-button [disabled]=\"!ordersForm.valid\" (click)=\"createOrUpdate()\">{{mode}}</button>\r\n    </div>\r\n</form>\r\n    </div>\r\n    <div class=\"col-6\" *ngIf=\"id !== undefined\">\r\n        <button md-raised-button color=\"warn\" (click)=\"delete()\"><md-icon>delete</md-icon></button>\r\n    </div>\r\n\r\n"
+module.exports = "<div class=\"row\">\r\n    <div class=\"col-6\">\r\n<form [formGroup]=\"ordersForm\">\r\n    <div class=\"form-container\">\r\n        <md-input-container class=\"user-full-width\">\r\n            <input mdInput placeholder=\"Tracking Number\"\r\n                   [(ngModel)]=\"order.trackingId\"\r\n                   formControlName=\"trackingId\">\r\n        </md-input-container>\r\n        <md-input-container class=\"user-full-width\">\r\n            <input mdInput placeholder=\"Location Name\"\r\n                   [(ngModel)]=\"order.location.name\" formControlName=\"locationName\">\r\n        </md-input-container>\r\n        <p>\r\n            <md-input-container class=\"example-full-width\">\r\n            <textarea mdInput placeholder=\"Street\"\r\n            [(ngModel)]=\"order.location.street\" formControlName=\"street\"></textarea>\r\n            </md-input-container>\r\n  </p>\r\n\r\n  <table class=\"example-full-width\" cellspacing=\"0\"><tr>\r\n    <td><md-input-container class=\"example-full-width\">\r\n      <input mdInput placeholder=\"City\" \r\n      [(ngModel)]=\"order.location.city\" formControlName=\"city\">\r\n\r\n    </md-input-container></td>\r\n    <td><md-input-container class=\"example-full-width\">\r\n      <input mdInput placeholder=\"State\"\r\n      [(ngModel)]=\"order.location.state\" formControlName=\"state\">\r\n    </md-input-container></td>\r\n    <td><md-input-container class=\"example-full-width\">\r\n      <input mdInput #postalCode maxlength=\"5\" placeholder=\"Postal Code\"\r\n      [(ngModel)]=\"order.location.zipCode\" formControlName=\"zipCode\">\r\n      <md-hint *ngIf=\"order.location.zipCode !== undefined\" align=\"end\">\r\n          {{order.location.zipCode.length}} / 5</md-hint>\r\n    </md-input-container></td>\r\n  </tr></table>\r\n        <button md-raised-button [disabled]=\"!ordersForm.valid\" (click)=\"createOrUpdate()\">{{mode}}</button>\r\n    </div>\r\n</form>\r\n    </div>\r\n    <div class=\"col-6\" *ngIf=\"id !== undefined\">\r\n        <button md-raised-button color=\"warn\" (click)=\"delete()\"><md-icon>delete</md-icon></button>\r\n    </div>\r\n\r\n"
 
 /***/ }),
 
@@ -36,7 +36,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".snackBarMessage {\n  color: #ff5722 !important; }\n", ""]);
 
 // exports
 
@@ -98,9 +98,8 @@ var OrderComponent = (function () {
         this.successCallback = function (res) {
             if (res !== null) {
                 var snackBarRef = void 0;
-                var snackBarConfig = {
-                    extraClasses: ['snackBarMessage']
-                };
+                var snackBarConfig = new __WEBPACK_IMPORTED_MODULE_6__angular_material__["i" /* MdSnackBarConfig */]();
+                snackBarConfig.extraClasses = ['snackBarMessage'];
                 switch (_this.mode) {
                     case 'Create':
                         {
@@ -146,8 +145,16 @@ var OrderComponent = (function () {
         var _this = this;
         this.id = this.activatedRoute.snapshot.params.id;
         var route = this.router.url;
-        var userIdPath = route.split('/orders')[0];
-        this.order.userId = Number(userIdPath[userIdPath.length - 1]);
+        var userIdPath = route.split('/orders')[0].split('users/')[1];
+        this.order.userId = Number(userIdPath);
+        this.ordersForm = this.formBuilder.group({
+            trackingId: [null, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required],
+            locationName: [null, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required],
+            street: [null, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required],
+            state: [null, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required],
+            city: [null, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required],
+            zipCode: [null, [__WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].maxLength]]
+        });
         //New order, extract userid from route
         if (this.id === 'new') {
             this.mode = 'Create';
@@ -164,14 +171,6 @@ var OrderComponent = (function () {
                 throw err;
             });
         }
-        this.ordersForm = this.formBuilder.group({
-            trackingId: [null, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required],
-            locationName: [null, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required],
-            street: [null, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required],
-            state: [null, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required],
-            city: [null, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required],
-            zipCode: [null, [__WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* Validators */].maxLength]]
-        });
     };
     return OrderComponent;
 }());
@@ -179,9 +178,10 @@ OrderComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'order',
         template: __webpack_require__("../../../../../src/app/order/order.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/order/order.component.scss")]
+        styles: [__webpack_require__("../../../../../src/app/order/order.component.scss")],
+        encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* ViewEncapsulation */].None
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__order_service__["a" /* OrderService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_forms__["i" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_forms__["i" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__angular_material__["i" /* MdSnackBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_material__["i" /* MdSnackBar */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__order_service__["a" /* OrderService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_forms__["i" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_forms__["i" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__angular_material__["j" /* MdSnackBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_material__["j" /* MdSnackBar */]) === "function" && _e || Object])
 ], OrderComponent);
 
 var _a, _b, _c, _d, _e;

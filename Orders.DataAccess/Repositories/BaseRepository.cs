@@ -56,7 +56,14 @@ namespace Orders.DataAccess.Repositories
 
         public virtual async Task<int> Save()
         {
-            return await _entities.SaveChangesAsync();
+            try
+            {
+                return await _entities.SaveChangesAsync();
+            }
+            catch(Exception e){
+                Console.Write(e.Message);
+                throw e;
+            }
         }
 
         private bool disposed = false;

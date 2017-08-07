@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="asp-net-core-1-0-u1z2c6" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^/Users/abhishekraj/Projects/OrderBob/Orders\.Web/obj/Release/netcoreapp1\.1/PubTmp/Out/$" />
+  </parameter>
+</parameters>

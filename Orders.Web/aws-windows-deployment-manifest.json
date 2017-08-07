@@ -3,11 +3,11 @@
     "deployments": {
         "aspNetCoreWeb": [
         {
-            "name": "orderBob",
+            "name": "order-bob",
             "parameters": {
-                "appBundle": "orderBob.zip",
+                "appBundle": "test1.zip",
                 "iisPath": "/",
-                "iisWebSite": "orderBob"
+                "iisWebSite": "Default Web Site"
             }
         }
         ]

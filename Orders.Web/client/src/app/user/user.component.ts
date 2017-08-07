@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {UserModel} from './user.model';
 import {UserService} from './user.service';
@@ -8,7 +8,8 @@ import {FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  styleUrls: ['./user.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class UserComponent implements OnInit {
     user: UserModel;
@@ -63,10 +64,9 @@ export class UserComponent implements OnInit {
             if(res !== null)
                  {
                     let snackBarRef:any;
-                     
-                    let snackBarConfig: MdSnackBarConfig = {
-                          extraClasses: ['snackBarMessage']
-                    }
+                    let snackBarConfig = new MdSnackBarConfig();
+                    snackBarConfig.extraClasses = ['snackBarMessage'];
+                    
                    switch(this.mode){
                      case 'Create':
                      {       

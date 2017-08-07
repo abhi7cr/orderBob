@@ -36,8 +36,11 @@ namespace Orders.Web.Controllers
 
         // POST api/orders
         [HttpPost(),Route("api/users/{id}/orders")]
-        public async Task<ActionResult> Post([FromBody]Order order)
+        public async Task<ActionResult> Post(int id, [FromBody]Order order)
         {
+			if (!checkUserIdFromRequestBodyAndUrl(id, order))
+				return BadRequest("Incorrect UserId");
+            
 			var orderEntity = _orderRepository.Add(order);
 			await _orderRepository.Save();
 
@@ -50,8 +53,11 @@ namespace Orders.Web.Controllers
 
         // PUT api/orders/5
         [HttpPut(),Route("api/users/{id}/orders")]
-        public async Task<ActionResult> Put([FromBody]Order order)
+        public async Task<ActionResult> Put(int id, [FromBody]Order order)
         {
+    		if (!checkUserIdFromRequestBodyAndUrl(id, order))
+				return BadRequest("Incorrect UserId");
+
 			var orderEntity = _orderRepository.Edit(order);
 			await _orderRepository.Save();
 
@@ -64,8 +70,11 @@ namespace Orders.Web.Controllers
 
         // DELETE api/orders
         [HttpDelete(),Route("api/users/{id}/orders")]
-        public async Task<ActionResult> Delete([FromBody]Order order)
+        public async Task<ActionResult> Delete(int id, [FromBody]Order order)
         {
+            if(!checkUserIdFromRequestBodyAndUrl(id, order))
+				return BadRequest("Incorrect UserId");
+
             var orderEntity = _orderRepository.Delete(order);
 
 			if (orderEntity == null)
@@ -75,5 +84,13 @@ namespace Orders.Web.Controllers
 
 			return Ok(order);
         }
-    }
+
+        #region Helper methods
+        private bool checkUserIdFromRequestBodyAndUrl(int id, Order order){
+            return id == order.UserId;
+        }
+		#endregion
+
+
+	}
 }

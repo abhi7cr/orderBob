@@ -14,3 +14,4 @@
 /Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Debug/netcoreapp1.1/Orders.DataAccess.pdb
 /Users/abhishekraj/Projects/OrderBob/Orders.Web/obj/Debug/netcoreapp1.1/Orders.Web.dll
 /Users/abhishekraj/Projects/OrderBob/Orders.Web/obj/Debug/netcoreapp1.1/Orders.Web.pdb
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/obj/Debug/netcoreapp1.1/Orders.Web.csproj.CoreCompileInputs.cache

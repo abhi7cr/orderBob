@@ -3,7 +3,7 @@ webpackJsonp([2],{
 /***/ "../../../../../src/app/user/user.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "{{mode}} User\r\n<div class=\"row\">\r\n  <div class=\"col-6\">\r\n<form class=\"users-form\" [formGroup]=\"usersForm\">\r\n    <div class=\"form-container\">\r\n        <md-input-container class=\"user-full-width\">\r\n            <input mdInput placeholder=\"First Name\"\r\n                    [(ngModel)]=\"user.firstName\"\r\n                   formControlName=\"firstName\">\r\n        </md-input-container>\r\n        <md-input-container class=\"user-full-width\">\r\n            <input mdInput placeholder=\"Last Name\"\r\n                   [(ngModel)]=\"user.lastName\" formControlName=\"lastName\">\r\n        </md-input-container>\r\n        <button md-raised-button [disabled]=\"!usersForm.valid\" (click)=\"createOrUpdate()\">{{mode}}</button>\r\n      </div>\r\n  </form>\r\n  </div>\r\n  <div class=\"col-3\" *ngIf=\"user.userId !== 0\">\r\n   <button md-raised-button color=\"warn\" (click)=\"delete()\"><md-icon>delete</md-icon></button>\r\n    </div>\r\n  <div class=\"col-3\" *ngIf=\"user.userId !== 0\">\r\n    <md-nav-list>\r\n     <md-list-item>\r\n        <a routerLink=\"orders\" routerLinkActive=\"active\">View Orders</a>\r\n      </md-list-item>\r\n      <!--<md-list-item>\r\n        <a routerLink=\"order\" routerLinkActive=\"active\">Create Order</a>\r\n      </md-list-item>-->\r\n    </md-nav-list>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-6\">\r\n<form class=\"users-form\" [formGroup]=\"usersForm\">\r\n    <div class=\"form-container\">\r\n        <md-input-container class=\"user-full-width\">\r\n            <input mdInput placeholder=\"First Name\"\r\n                    [(ngModel)]=\"user.firstName\"\r\n                   formControlName=\"firstName\">\r\n        </md-input-container>\r\n        <md-input-container class=\"user-full-width\">\r\n            <input mdInput placeholder=\"Last Name\"\r\n                   [(ngModel)]=\"user.lastName\" formControlName=\"lastName\">\r\n        </md-input-container>\r\n        <button md-raised-button [disabled]=\"!usersForm.valid\" (click)=\"createOrUpdate()\">{{mode}}</button>\r\n      </div>\r\n  </form>\r\n  </div>\r\n  <div class=\"col-3\" *ngIf=\"user.userId !== 0\">\r\n   <button md-raised-button color=\"warn\" (click)=\"delete()\"><md-icon>delete</md-icon></button>\r\n    </div>\r\n  <div class=\"col-3\" *ngIf=\"user.userId !== 0\">\r\n    <md-nav-list>\r\n     <md-list-item>\r\n        <a routerLink=\"orders\" routerLinkActive=\"active\">View Orders</a>\r\n      </md-list-item>\r\n      <!--<md-list-item>\r\n        <a routerLink=\"order\" routerLinkActive=\"active\">Create Order</a>\r\n      </md-list-item>-->\r\n    </md-nav-list>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -15,7 +15,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".user-form {\n  width: 500px; }\n\n.user-full-width {\n  width: 100%; }\n", ""]);
+exports.push([module.i, ".user-form {\n  width: 500px; }\n\n.user-full-width {\n  width: 100%; }\n\n.snackBarMessage {\n  color: #ff5722 !important; }\n", ""]);
 
 // exports
 
@@ -74,9 +74,8 @@ var UserComponent = (function () {
         this.successCallback = function (res) {
             if (res !== null) {
                 var snackBarRef = void 0;
-                var snackBarConfig = {
-                    extraClasses: ['snackBarMessage']
-                };
+                var snackBarConfig = new __WEBPACK_IMPORTED_MODULE_4__angular_material__["i" /* MdSnackBarConfig */]();
+                snackBarConfig.extraClasses = ['snackBarMessage'];
                 switch (_this.mode) {
                     case 'Create':
                         {
@@ -144,9 +143,10 @@ UserComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'user',
         template: __webpack_require__("../../../../../src/app/user/user.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/user/user.component.scss")]
+        styles: [__webpack_require__("../../../../../src/app/user/user.component.scss")],
+        encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* ViewEncapsulation */].None
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__user_service__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__angular_forms__["i" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_forms__["i" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__angular_material__["i" /* MdSnackBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_material__["i" /* MdSnackBar */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__user_service__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__angular_forms__["i" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_forms__["i" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__angular_material__["j" /* MdSnackBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_material__["j" /* MdSnackBar */]) === "function" && _e || Object])
 ], UserComponent);
 
 var _a, _b, _c, _d, _e;
@@ -357,7 +357,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "a {\n  font-family: 'Dosis', sans-serif; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
