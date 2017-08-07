@@ -26,25 +26,31 @@ export class OrderComponent {
     }
 
     ngOnInit(){
+
       this.id = this.activatedRoute.snapshot.params.id;
-      //Check whether its an existing order or a new order using the url
-      this.mode = this.router.url.indexOf('new') !== -1?
-                    "Create":"Update";
-      if(this.id && this.mode === "Update")
+       let route = this.router.url;
+       let userIdPath =  route.split('/orders')[0];
+       this.order.userId = Number(userIdPath[userIdPath.length-1]);
+      //New order, extract userid from route
+      if(this.id === 'new'){
+           
+            this.mode = 'Create';
+      }
+      else
+        this.mode = 'Update';
+    
+      if(this.mode === "Update")
         {
             this.mode = 'Update';
-            this.orderService.get(Number(this.id))
+            this.orderService.getById(Number(this.id), this.order.userId)
                         .subscribe(res => {
                                 if(res !== null)
-                                    this.order = res[0];
+                                    this.order = res;
             }, err => {
                 throw err;
             });
         }
-        else
-            {
-                this.order.userId = Number(this.id);
-            }
+
         this.ordersForm = this.formBuilder.group({
                 trackingId:[null, Validators.required],
                 locationName: [null, Validators.required],
@@ -108,7 +114,7 @@ export class OrderComponent {
                          this.onSnackBarActionCallback(snackBarRef);
                      }        
                    }
-                    this.router.navigateByUrl('/orders');
+                    this.router.navigate(['../'], {relativeTo: this.activatedRoute});
                     }
             else {
                     alert("Error!Unable to " + this.mode + " order");

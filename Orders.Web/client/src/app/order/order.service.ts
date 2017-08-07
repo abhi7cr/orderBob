@@ -11,30 +11,28 @@ export class OrderService {
 
      constructor(private http: Http) {
         this.headers = new Headers();
-        this.headers.append('Content-Type', 'application/json;charset=utf-8;');
+        this.headers.append('Content-Type', 'application/json');
     }
 
     get = (userId: number):Observable<OrderModel[]> => {
-            // let searchParams = new URLSearchParams();
-            // searchParams.append('userId', userId.toString());
-            return this.http.get('/api/orders/user/'+ userId).map(res => res.json())
+            return this.http.get('/api/users/+' + userId + '/orders').map(res => res.json())
     }
 
-    getById = (id: number):Observable<OrderModel> => {
-            return this.http.get('/api/orders/'+id).map(res => res.json())
+    getById = (id: number, userId:number):Observable<OrderModel> => {
+            return this.http.get('/api/users/'+ userId + '/orders/'+id).map(res => res.json())
     }
 
     create = (order: OrderModel):Observable<OrderModel> => {
         let orderToCreate= this.prepareOrderObjectToSend(order);
 
-        return this.http.post('/api/orders', orderToCreate, {headers: this.headers})
+        return this.http.post('/api/users/' + order.userId+ '/orders', orderToCreate, {headers: this.headers})
                         .map(res => res.json())
     }
 
-     update = (order: OrderModel):Observable<OrderModel> => {
+    update = (order: OrderModel):Observable<OrderModel> => {
         let orderToUpdate = this.prepareOrderObjectToSend(order);
 
-        return this.http.put('/api/orders/'+ order.orderId, orderToUpdate, {headers: this.headers})
+        return this.http.put('/api/users/' + order.userId + '/orders', orderToUpdate, {headers: this.headers})
                         .map(res => res.json())
     }
 
@@ -46,7 +44,7 @@ export class OrderService {
         request.method = 'DELETE';
         request.headers = this.headers;
 
-        return this.http.delete('/api/orders', request)
+        return this.http.delete('/api/users/' + order.userId + '/orders', request)
                         .map(res => res.json())
     }
 

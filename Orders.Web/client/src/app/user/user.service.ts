@@ -32,7 +32,7 @@ export class UserService {
     update = (user: UserModel):Observable<UserModel> => {
         let userToSend = this.prepareUserToSend(user);
 
-        return this.http.put('/api/users/'+ user.userId, userToSend, {headers: this.headers})
+        return this.http.put('/api/users', userToSend, {headers: this.headers})
                         .map(res => res.json())
     }
 

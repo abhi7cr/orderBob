@@ -47,12 +47,13 @@ namespace Orders.Web.Controllers
             
                 await _userRepository.Save();
 
-                return CreatedAtRoute("GetUser", new { id = userEntity.Entity.UserId }, user);
+			user.UserId = userEntity.Entity.UserId;
+			return Ok(user);
         }
 
         // PUT api/users/5
-        [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody]User user)
+        [HttpPut()]
+        public async Task<ActionResult> Put([FromBody]User user)
         {
            
 				EntityEntry<User> userEntity = _userRepository.Edit(user);
@@ -61,12 +62,13 @@ namespace Orders.Web.Controllers
 			    if (userEntity == null)
 				    return BadRequest("FirstName, LastName and UserId required");
 
-				return CreatedAtRoute("GetUser", new { id = userEntity.Entity.UserId }, user);
+            user.UserId = userEntity.Entity.UserId;
+			return Ok(user);
 			
         }
 
         // DELETE api/users/
-        [HttpDelete]
+        [HttpDelete()]
         public async Task<ActionResult> Delete([FromBody]User user)
         {
             EntityEntry<User> userEntity  = _userRepository.Delete(user);
@@ -76,7 +78,7 @@ namespace Orders.Web.Controllers
 
             await _userRepository.Save();
 
-            return Ok("User deleted successfully");
+            return Ok(user);
         }
     }
 }

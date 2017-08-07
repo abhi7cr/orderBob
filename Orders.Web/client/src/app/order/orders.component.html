@@ -1,13 +1,20 @@
 <md-list>
     <md-list-item>
-        <a routerLink="new" routerLinkActive="active"><md-icon>add_box</md-icon></a>
+        <div mdTooltip="New Order" [mdTooltipPosition]="position">
+            <a routerLink="new" routerLinkActive="active"><md-icon>add_box</md-icon></a>
+        </div>
       </md-list-item>
     <p *ngIf="isLoading">Please Wait...</p>
     <p *ngIf="isOrderListEmpty">{{noOrdersMessage}}</p>
-    <md-list-item *ngFor="let order of orders | async">
+    <md-list-item *ngFor="let order of pagedOrders">
         <md-icon>description</md-icon>
         <a routerLink="{{order.orderId}}" routerLinkActive="active">{{order.trackingId}}</a>
     </md-list-item>
 </md-list>
+<md-paginator [length]="orders.length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="onPageOptionsChange($event)">
+</md-paginator>
 
 

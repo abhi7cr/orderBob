@@ -7,7 +7,6 @@
 /Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Debug/netcoreapp1.1/Orders.Web.runtimeconfig.json
 /Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Debug/netcoreapp1.1/Orders.Web.runtimeconfig.dev.json
 /Users/abhishekraj/Projects/OrderBob/Orders.Web/obj/Debug/netcoreapp1.1/Orders.Web.csprojResolveAssemblyReference.cache
-/Users/abhishekraj/Projects/OrderBob/Orders.Web/obj/Debug/netcoreapp1.1/Orders.Web.csproj.CoreCompileInputs.cache
 /Users/abhishekraj/Projects/OrderBob/Orders.Web/obj/Debug/netcoreapp1.1/Orders.Web.AssemblyInfo.cs
 /Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Debug/netcoreapp1.1/Orders.Web.dll
 /Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Debug/netcoreapp1.1/Orders.Web.pdb

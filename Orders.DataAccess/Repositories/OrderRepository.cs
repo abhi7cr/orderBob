@@ -25,6 +25,14 @@ namespace Orders.DataAccess.Repositories
             return orders.Where(o=>o.UserId == userId);
 		}
 
+		public override async Task<Order> GetById(int id)
+		{
+
+			var order = await base.GetById(id);
+            await this.Context.Entry(order).Reference(x => x.Location).LoadAsync();
+			return order;
+		}
+
         public IQueryable<Order> GetOrderById(int id)
 		{
 

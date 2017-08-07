@@ -10,6 +10,7 @@ using Orders.DataAccess.Repositories;
 
 namespace Orders.Web.Controllers
 {
+
     public class OrdersController : Controller
     {
         private IOrderRepository _orderRepository;
@@ -19,25 +20,22 @@ namespace Orders.Web.Controllers
 
         }
         // GET: api/orders/1
-        [Route("api/getOrdersByUser/{id}")]
+        [HttpGet("api/users/{id}/orders"), Route("api/users/{id}/orders")]
         public IQueryable<Order> GetByUser(int id)
         {
             return _orderRepository.GetOrdersByUser(id);
         }
 
         // GET api/users/5
-        [Route("api/getOrder/{id}")]
-        public IQueryable<Order> Get(int id)
+        [HttpGet("api/users/{userId}/orders/{orderId}", Name = "GetOrder"), Route("api/users/{userId}/orders/{orderId}")]
+        public async Task<ActionResult> Get(int userId, int orderId)
         {
-            return _orderRepository.GetOrderById(id);
-            //if (order == null)
-            //    return NotFound("Order not found!");
-            
-            //return Ok(order);
+            var order = await _orderRepository.GetById(orderId);
+            return Ok(order);
         }
 
         // POST api/orders
-        [Route("api/createOrder")]
+        [HttpPost(),Route("api/users/{id}/orders")]
         public async Task<ActionResult> Post([FromBody]Order order)
         {
 			var orderEntity = _orderRepository.Add(order);
@@ -46,25 +44,27 @@ namespace Orders.Web.Controllers
 			if (orderEntity == null)
 				return BadRequest("Tracking Number, Location details and UserId are required");
 
-			 return Ok("order created successfully!");
+			order.OrderId = orderEntity.Entity.OrderId;
+			return Ok(order);
         }
 
         // PUT api/orders/5
-        [Route("api/updateOrder/{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody]Order order)
+        [HttpPut(),Route("api/users/{id}/orders")]
+        public async Task<ActionResult> Put([FromBody]Order order)
         {
 			var orderEntity = _orderRepository.Edit(order);
 			await _orderRepository.Save();
 
 			if (orderEntity == null)
 				return BadRequest("Tracking Number, Location details, OrderId and UserId are required");
-
-			return Ok("order updated successfully!");
+            
+            order.OrderId = orderEntity.Entity.OrderId;
+			return Ok(order);
         }
 
         // DELETE api/orders
-        [Route("api/deleteOrder")]
-        public async Task<ActionResult> Delete(Order order)
+        [HttpDelete(),Route("api/users/{id}/orders")]
+        public async Task<ActionResult> Delete([FromBody]Order order)
         {
             var orderEntity = _orderRepository.Delete(order);
 
@@ -73,7 +73,7 @@ namespace Orders.Web.Controllers
 
             await _orderRepository.Save();
 
-			return Ok("User deleted successfully");  
+			return Ok(order);
         }
     }
 }
