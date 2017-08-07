@@ -15,7 +15,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".user-form {\n  width: 500px; }\n\n.user-full-width {\n  width: 100%; }\n\n.snackBarMessage {\n  color: #ff5722 !important; }\n", ""]);
+exports.push([module.i, ".user-form {\n  width: 500px; }\n\n.user-full-width {\n  width: 100%; }\n\n.mat-simple-snackbar, .snackBarMessage {\n  color: #ff5722 !important; }\n", ""]);
 
 // exports
 
