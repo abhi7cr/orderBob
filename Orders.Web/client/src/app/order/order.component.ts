@@ -43,8 +43,7 @@ export class OrderComponent {
         });
 
       //New order, extract userid from route
-      if(this.id === 'new'){
-           
+      if(this.id === 'new'){       
             this.mode = 'Create';
       }
       else

@@ -9,6 +9,6 @@ namespace Orders.DataAccess.Models
         public string LastName { get; set; }
 
         //Navigation property
-        public List<Order> Orders { get; set; }
+        public virtual List<Order> Orders { get; set; }
     }
 }

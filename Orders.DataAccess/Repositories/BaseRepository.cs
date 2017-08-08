@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 namespace Orders.DataAccess.Repositories
 {
     public abstract class BaseRepository<T, C> :
-    IBaseRepository<T> where T : class where C : DbContext, new()
+    IBaseRepository<T> where T : class where C : DbContext
     {
 
-        private C _entities = new C();
+        private C _entities;
         public C Context
         {
 
@@ -41,7 +41,7 @@ namespace Orders.DataAccess.Repositories
 
         public virtual EntityEntry<T> Add(T entity)
         {
-            return _entities.Set<T>().Add(entity);
+            return _entities.Add<T>(entity);
         }
 
         public virtual EntityEntry<T> Delete(T entity)

@@ -9,15 +9,17 @@ namespace Orders.DataAccess.Repositories
 	public class UserRepository :
 				BaseRepository<User, OrdersContext>, IUserRepository
 	{
-		//public UserRepository(OrdersContext ordersContext)
-		//{
-		//	this.Context = ordersContext;
-		//}
+		public UserRepository(OrdersContext ordersContext)
+		{
+			this.Context = ordersContext;
+		}
 
 		public override async Task<User> GetById(int id)
 		{
 
 			var user = await base.GetById(id);
+            if (user == null)
+                return null;
             await this.Context.Entry(user).Collection(x => x.Orders).LoadAsync();
 			return user;
 		}

@@ -8,7 +8,7 @@ namespace Orders.DataAccess.Models
 
         //Foreign keys & Navigation properties
         public int UserId { get; set; }
-        public User User { get; set; }
-        public Location Location { get; set; }
+        public virtual User User { get; set; }
+        public virtual Location Location { get; set; }
     }
 }

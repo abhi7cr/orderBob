@@ -20,14 +20,14 @@ namespace Orders.Web.Controllers
 
         }
         // GET: api/orders/1
-        [HttpGet("api/users/{id}/orders"), Route("api/users/{id}/orders")]
+        [HttpGet(), Route("api/users/{id}/orders")]
         public IActionResult GetByUser(int id)
         {
             return Ok(_orderRepository.GetOrdersByUser(id));
         }
 
         // GET api/orders/5
-        [HttpGet("api/users/{userId}/orders/{orderId}", Name = "GetOrder"), Route("api/users/{userId}/orders/{orderId}")]
+        [HttpGet(), Route("api/users/{userId}/orders/{orderId}")]
         public async Task<IActionResult> Get(int userId, int orderId)
         {
             var order = await _orderRepository.GetById(orderId);

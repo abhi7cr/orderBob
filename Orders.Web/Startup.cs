@@ -5,7 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Orders.DataAccess.Repositories;
 using System.IO;
+using Orders.DataAccess.Models;
 using Microsoft.Extensions.Logging.AzureAppServices;
+using Microsoft.EntityFrameworkCore;
 
 namespace Orders.Web
 {
@@ -26,7 +28,7 @@ namespace Orders.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<OrdersContext>(opt => opt.UseSqlServer("Data Source=orderbob.conhcqpgorbb.us-east-1.rds.amazonaws.com,1433;Initial Catalog=orderbob;Persist Security Info=True;User ID=abhi7cr;Password=Keshibha71208;Encrypt=False")); 
+            services.AddDbContext<OrdersContext>(opt => opt.UseSqlServer("Data Source=orderbob.conhcqpgorbb.us-east-1.rds.amazonaws.com,1433;Initial Catalog=orderbob;Persist Security Info=True;User ID=abhi7cr;Password=Keshibha71208;Encrypt=False")); 
 			services.AddMvc();
             services.AddMvc().
                     AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);

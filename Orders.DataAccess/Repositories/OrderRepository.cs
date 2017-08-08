@@ -11,10 +11,10 @@ namespace Orders.DataAccess.Repositories
 	public class OrderRepository :
 				BaseRepository<Order, OrdersContext>, IOrderRepository
 	{
-		//public OrderRepository(OrdersContext ordersContext)
-		//{
-		//	this.Context = ordersContext;
-		//}
+		public OrderRepository(OrdersContext ordersContext)
+		{
+			this.Context = ordersContext;
+		}
 
 		public IQueryable<Order> GetOrdersByUser(int userId)
 		{
@@ -29,6 +29,9 @@ namespace Orders.DataAccess.Repositories
 		{
 
 			var order = await base.GetById(id);
+            if (order == null)
+                return null;
+            
             await this.Context.Entry(order).Reference(x => x.Location).LoadAsync();
 			return order;
 		}
