@@ -15,10 +15,10 @@
       </div>
   </form>
   </div>
-  <div class="col-3" *ngIf="user.userId !== 0">
+  <div class="col-3" *ngIf="user.userId !== undefined">
    <button md-raised-button color="warn" (click)="delete()"><md-icon>delete</md-icon></button>
     </div>
-  <div class="col-3" *ngIf="user.userId !== 0">
+  <div class="col-3" *ngIf="user.userId !== undefined">
     <md-nav-list>
      <md-list-item>
         <a routerLink="orders" routerLinkActive="active">View Orders</a>
