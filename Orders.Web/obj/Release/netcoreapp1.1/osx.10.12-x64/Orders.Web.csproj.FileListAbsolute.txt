@@ -1,0 +1,13 @@
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Release/netcoreapp1.1/osx.10.12-x64/libhostpolicy.dylib
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Release/netcoreapp1.1/osx.10.12-x64/libhostfxr.dylib
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Release/netcoreapp1.1/osx.10.12-x64/Orders.Web
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Release/netcoreapp1.1/osx.10.12-x64/Orders.Web.deps.json
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Release/netcoreapp1.1/osx.10.12-x64/Orders.Web.runtimeconfig.json
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Release/netcoreapp1.1/osx.10.12-x64/Orders.Web.runtimeconfig.dev.json
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Release/netcoreapp1.1/osx.10.12-x64/Orders.Web.dll
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Release/netcoreapp1.1/osx.10.12-x64/Orders.Web.pdb
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Release/netcoreapp1.1/osx.10.12-x64/Orders.DataAccess.dll
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/bin/Release/netcoreapp1.1/osx.10.12-x64/Orders.DataAccess.pdb
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/obj/Release/netcoreapp1.1/osx.10.12-x64/Orders.Web.AssemblyInfo.cs
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/obj/Release/netcoreapp1.1/osx.10.12-x64/Orders.Web.dll
+/Users/abhishekraj/Projects/OrderBob/Orders.Web/obj/Release/netcoreapp1.1/osx.10.12-x64/Orders.Web.pdb

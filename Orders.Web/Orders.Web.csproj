@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-   <OutputType>Exe</OutputType>
+   <!--<OutputType>Exe</OutputType>-->
     <TargetFramework>netcoreapp1.1</TargetFramework>
+    <!--<RuntimeIdentifiers>win10-x64;osx.10.12-x64</RuntimeIdentifiers>-->
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
@@ -17,6 +18,7 @@
     <PackageReference Include="AWSSDK.RDS" Version="3.3.12.3" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="2.0.0-preview2-final" />
     </ItemGroup>
     <ItemGroup>
         <None Include="web.config" CopyToPublishDirectory="Always" />
@@ -29,9 +31,9 @@
     <Folder Include="client\src\app\order\" />
     <Folder Include="client\src\app\shared\" />
   </ItemGroup>
-  <ItemGroup>
+  <!--<ItemGroup>
     <Content Remove="wwwroot\index.html" />
-  </ItemGroup>
+  </ItemGroup>-->
   <ItemGroup>
   <ProjectReference Include="..\Orders.DataAccess\Orders.DataAccess.csproj" />
   </ItemGroup>

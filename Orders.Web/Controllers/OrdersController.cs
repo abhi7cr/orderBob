@@ -21,14 +21,14 @@ namespace Orders.Web.Controllers
         }
         // GET: api/orders/1
         [HttpGet("api/users/{id}/orders"), Route("api/users/{id}/orders")]
-        public IQueryable<Order> GetByUser(int id)
+        public IActionResult GetByUser(int id)
         {
-            return _orderRepository.GetOrdersByUser(id);
+            return Ok(_orderRepository.GetOrdersByUser(id));
         }
 
-        // GET api/users/5
+        // GET api/orders/5
         [HttpGet("api/users/{userId}/orders/{orderId}", Name = "GetOrder"), Route("api/users/{userId}/orders/{orderId}")]
-        public async Task<ActionResult> Get(int userId, int orderId)
+        public async Task<IActionResult> Get(int userId, int orderId)
         {
             var order = await _orderRepository.GetById(orderId);
             return Ok(order);
@@ -36,7 +36,7 @@ namespace Orders.Web.Controllers
 
         // POST api/orders
         [HttpPost(),Route("api/users/{id}/orders")]
-        public async Task<ActionResult> Post(int id, [FromBody]Order order)
+        public async Task<IActionResult> Post(int id, [FromBody]Order order)
         {
 			if (!checkUserIdFromRequestBodyAndUrl(id, order))
 				return BadRequest("Incorrect UserId");
@@ -53,7 +53,7 @@ namespace Orders.Web.Controllers
 
         // PUT api/orders/5
         [HttpPut(),Route("api/users/{id}/orders")]
-        public async Task<ActionResult> Put(int id, [FromBody]Order order)
+        public async Task<IActionResult> Put(int id, [FromBody]Order order)
         {
     		if (!checkUserIdFromRequestBodyAndUrl(id, order))
 				return BadRequest("Incorrect UserId");
@@ -70,7 +70,7 @@ namespace Orders.Web.Controllers
 
         // DELETE api/orders
         [HttpDelete(),Route("api/users/{id}/orders")]
-        public async Task<ActionResult> Delete(int id, [FromBody]Order order)
+        public async Task<IActionResult> Delete(int id, [FromBody]Order order)
         {
             if(!checkUserIdFromRequestBodyAndUrl(id, order))
 				return BadRequest("Incorrect UserId");

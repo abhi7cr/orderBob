@@ -15,17 +15,17 @@ export class OrderService {
     }
 
     get = (userId: number):Observable<OrderModel[]> => {
-            return this.http.get('/api/users/+' + userId + '/orders').map(res => res.json())
+            return this.http.get('/api/users/' + userId + '/orders',{headers: this.headers}).map(res => res.json())
     }
 
     getById = (id: number, userId:number):Observable<OrderModel> => {
-            return this.http.get('/api/users/'+ userId + '/orders/'+id).map(res => res.json())
+            return this.http.get('/api/users/' + userId + '/orders/'+id, {headers: this.headers}).map(res => res.json())
     }
 
     create = (order: OrderModel):Observable<OrderModel> => {
         let orderToCreate= this.prepareOrderObjectToSend(order);
 
-        return this.http.post('/api/users/' + order.userId+ '/orders', orderToCreate, {headers: this.headers})
+        return this.http.post('/api/users/' + order.userId + '/orders', orderToCreate, {headers: this.headers})
                         .map(res => res.json())
     }
 

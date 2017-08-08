@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Web", "Orders.Web\Or
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.DataAccess", "Orders.DataAccess\Orders.DataAccess.csproj", "{90F35EF9-B519-4E66-B31A-0861F3468F4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.DataAccess.Tests", "Orders.DataAccess.Tests\Orders.DataAccess.Tests.csproj", "{FBD7E1CC-B2A0-4C0F-9E51-F7370F0EACBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -15,5 +17,9 @@ Global
 		{90F35EF9-B519-4E66-B31A-0861F3468F4F}.Debug|x86.Build.0 = Debug|Any CPU
 		{90F35EF9-B519-4E66-B31A-0861F3468F4F}.Release|x86.ActiveCfg = Release|Any CPU
 		{90F35EF9-B519-4E66-B31A-0861F3468F4F}.Release|x86.Build.0 = Release|Any CPU
+		{FBD7E1CC-B2A0-4C0F-9E51-F7370F0EACBD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FBD7E1CC-B2A0-4C0F-9E51-F7370F0EACBD}.Debug|x86.Build.0 = Debug|Any CPU
+		{FBD7E1CC-B2A0-4C0F-9E51-F7370F0EACBD}.Release|x86.ActiveCfg = Release|Any CPU
+		{FBD7E1CC-B2A0-4C0F-9E51-F7370F0EACBD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

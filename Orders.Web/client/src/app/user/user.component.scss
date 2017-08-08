@@ -6,6 +6,11 @@
     width: 100%;
 }
 
-.mat-simple-snackbar, .snackBarMessage {
+ .snackBarMessage, .mat-simple-snackbar {
     color: #ff5722 !important;
 }
+
+a, body, button, p, span, div {
+    font-family:'Dosis', sans-serif;
+ }
+

@@ -15,11 +15,14 @@ export class UserService {
     }
 
     get = ():Observable<UserModel[]> => {
-            return this.http.get('/api/users').map(res => res.json())
+            return this.http.get('/api/users', {headers: this.headers})
+            .map(res => {
+                return res.json();
+            });
     }
 
     getById = (id: number):Observable<UserModel> => {
-            return this.http.get('/api/users/'+id).map(res => res.json())
+            return this.http.get('/api/users/'+id, {headers: this.headers}).map(res => res.json())
     }
 
     create = (user: UserModel):Observable<UserModel> => {

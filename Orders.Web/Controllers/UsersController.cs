@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Orders.DataAccess.Models;
 using Orders.DataAccess.Repositories;
+using Microsoft.Extensions.Logging;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,21 +16,32 @@ namespace Orders.Web.Controllers
     public class UsersController : Controller
     {
         private IUserRepository _userRepository;
-        public UsersController(IUserRepository userRepository)
+        private ILogger _logger;
+        public UsersController(IUserRepository userRepository,
+                                ILogger<UsersController> logger)
         {
             _userRepository = userRepository;
-
+            _logger = logger;
         }
         // GET: api/values
         [HttpGet]
-        public IQueryable<User> Get()
+        public IActionResult Get()
         {
-            return _userRepository.GetAll();
+            try
+            {
+                var users = _userRepository.GetAll().ToList();
+                _logger.LogInformation(200, "Users: {Users}", users);
+                return Ok(users);
+            }
+            catch(Exception e){
+				_logger.LogWarning(404, e, "Users: {Exception}", "Get users exception");
+                return NotFound(e);
+            }
         }
 
         // GET api/users/5
         [HttpGet("{id}", Name="GetUser")]
-        public async Task<ActionResult> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             var user = await _userRepository.GetById(id);
             return Ok(user);
@@ -37,7 +49,7 @@ namespace Orders.Web.Controllers
 
         // POST api/users
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody]User user)
+        public async Task<IActionResult> Post([FromBody]User user)
         {
 
                 EntityEntry<User> userEntity = _userRepository.Add(user);
@@ -53,7 +65,7 @@ namespace Orders.Web.Controllers
 
         // PUT api/users/5
         [HttpPut()]
-        public async Task<ActionResult> Put([FromBody]User user)
+        public async Task<IActionResult> Put([FromBody]User user)
         {
            
 				EntityEntry<User> userEntity = _userRepository.Edit(user);
@@ -69,7 +81,7 @@ namespace Orders.Web.Controllers
 
         // DELETE api/users/
         [HttpDelete()]
-        public async Task<ActionResult> Delete([FromBody]User user)
+        public async Task<IActionResult> Delete([FromBody]User user)
         {
             EntityEntry<User> userEntity  = _userRepository.Delete(user);
 
